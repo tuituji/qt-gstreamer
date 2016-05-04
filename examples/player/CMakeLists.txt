@@ -20,4 +20,4 @@ set(player_SOURCES main.cpp player.cpp mediaapp.cpp)
 
 add_executable(player ${player_SOURCES})
 target_link_libraries(player ${QTGSTREAMER_UI_LIBRARIES})
-qt4or5_use_modules(player Core Gui Widgets)
+qt5_use_modules(player Core Gui Widgets)

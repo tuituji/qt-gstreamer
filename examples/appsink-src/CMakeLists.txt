@@ -19,4 +19,4 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${QTGSTREAMER_FLAGS}")
 
 add_executable(appsink-src main.cpp)
 target_link_libraries(appsink-src ${QTGSTREAMER_UTILS_LIBRARIES})
-qt4or5_use_modules(appsink-src Core)
+qt5_use_modules(appsink-src Core)

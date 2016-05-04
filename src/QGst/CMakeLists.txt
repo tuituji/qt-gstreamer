@@ -174,7 +174,7 @@ target_link_libraries(${QTGSTREAMER_LIBRARY} LINK_PRIVATE ${GOBJECT_LIBRARIES}
                                   ${GSTREAMER_AUDIO_LIBRARY}
                                   ${GSTREAMER_VIDEO_LIBRARY}
                                   ${GSTREAMER_PBUTILS_LIBRARY})
-qt4or5_use_modules(${QTGSTREAMER_LIBRARY} LINK_PUBLIC Core)
+qt5_use_modules(${QTGSTREAMER_LIBRARY} LINK_PUBLIC Core)
 
 # Build and link QtGStreamerQuick
 if (Qt4or5_Quick2_FOUND)
@@ -183,8 +183,8 @@ if (Qt4or5_Quick2_FOUND)
                                                     SOVERSION ${QTGSTREAMER_QUICK_SOVERSION}
                                                       VERSION ${QTGSTREAMER_VERSION})
     target_link_libraries(${QTGSTREAMER_QUICK_LIBRARY} LINK_PUBLIC ${QTGSTREAMER_LIBRARY})
-    qt4or5_use_modules(${QTGSTREAMER_QUICK_LIBRARY} LINK_PUBLIC Quick2)
-    qt4or5_use_modules(${QTGSTREAMER_QUICK_LIBRARY} LINK_PRIVATE Core)
+    qt5_use_modules(${QTGSTREAMER_QUICK_LIBRARY} LINK_PUBLIC Quick2)
+    qt5_use_modules(${QTGSTREAMER_QUICK_LIBRARY} LINK_PRIVATE Core)
 endif()
 
 # Build and link QtGStreamerUi
@@ -193,10 +193,10 @@ set_target_properties(${QTGSTREAMER_UI_LIBRARY} PROPERTIES OUTPUT_NAME ${QTGSTRE
                                                  SOVERSION ${QTGSTREAMER_UI_SOVERSION}
                                                    VERSION ${QTGSTREAMER_VERSION})
 target_link_libraries(${QTGSTREAMER_UI_LIBRARY} LINK_PUBLIC ${QTGSTREAMER_LIBRARY})
-qt4or5_use_modules(${QTGSTREAMER_UI_LIBRARY} LINK_PUBLIC Widgets Gui)
-qt4or5_use_modules(${QTGSTREAMER_UI_LIBRARY} LINK_PRIVATE Core)
+qt5_use_modules(${QTGSTREAMER_UI_LIBRARY} LINK_PUBLIC Widgets Gui)
+qt5_use_modules(${QTGSTREAMER_UI_LIBRARY} LINK_PRIVATE Core)
 if (Qt4or5_OpenGL_FOUND AND (OPENGL_FOUND OR OPENGLES2_FOUND))
-    qt4or5_use_modules(${QTGSTREAMER_UI_LIBRARY} LINK_PRIVATE OpenGL)
+    qt5_use_modules(${QTGSTREAMER_UI_LIBRARY} LINK_PRIVATE OpenGL)
 endif()
 
 # Build and link QtGStreamerUtils
@@ -206,7 +206,7 @@ set_target_properties(${QTGSTREAMER_UTILS_LIBRARY} PROPERTIES OUTPUT_NAME ${QTGS
                                                       VERSION ${QTGSTREAMER_VERSION})
 target_link_libraries(${QTGSTREAMER_UTILS_LIBRARY} LINK_PUBLIC ${QTGSTREAMER_LIBRARY})
 target_link_libraries(${QTGSTREAMER_UTILS_LIBRARY} LINK_PRIVATE ${GSTREAMER_LIBRARY} ${GSTREAMER_APP_LIBRARY})
-qt4or5_use_modules(${QTGSTREAMER_UTILS_LIBRARY} LINK_PRIVATE Core)
+qt5_use_modules(${QTGSTREAMER_UTILS_LIBRARY} LINK_PRIVATE Core)
 
 # Install
 install(TARGETS ${QTGSTREAMER_LIBRARY} EXPORT ${EXPORT_TARGET_SET} ${QTGSTREAMER_INSTALL_TARGET_DEFAULT_ARGS})

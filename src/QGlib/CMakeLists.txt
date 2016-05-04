@@ -50,7 +50,7 @@ set_target_properties(${QTGLIB_LIBRARY} PROPERTIES OUTPUT_NAME ${QTGLIB_LIBRARY}
                                           SOVERSION ${QTGLIB_SOVERSION}
                                             VERSION ${QTGSTREAMER_VERSION})
 target_link_libraries(${QTGLIB_LIBRARY} LINK_PRIVATE ${GOBJECT_LIBRARIES})
-qt4or5_use_modules(${QTGLIB_LIBRARY} LINK_PUBLIC Core)
+qt5_use_modules(${QTGLIB_LIBRARY} LINK_PUBLIC Core)
 
 # Install
 install(TARGETS ${QTGLIB_LIBRARY} EXPORT ${EXPORT_TARGET_SET} ${QTGSTREAMER_INSTALL_TARGET_DEFAULT_ARGS})

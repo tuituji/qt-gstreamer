@@ -19,30 +19,29 @@ option(USE_QT_PLUGIN_DIR "Install qt plugins at the system location" ON)
 include(GNUInstallDirs)
 include(MacroLogFeature)
 
-set(Qt4_MIN_VERSION 4.7)
+#set(Qt4_MIN_VERSION 4.7)
 set(Qt5_MIN_VERSION 5.0.0)
-find_package(Qt4or5 COMPONENTS Core Gui Widgets OPTIONAL_COMPONENTS OpenGL Quick1 Quick2 Qml Test)
-macro_log_feature(Qt4or5_FOUND "Qt" "Required for building everything"
-                               "http://qt-project.org/" TRUE "${Qt4or5_MIN_VERSION}")
-macro_log_feature(Qt4or5_OpenGL_FOUND "QtOpenGL"
+set(QT_VERSION 5)
+#find_package(Qt5 COMPONENTS Core Gui Widgets OPTIONAL_COMPONENTS OpenGL Quick1 Quick2 Qml Test)
+find_package(Qt5 COMPONENTS Core Gui Widgets OPTIONAL_COMPONENTS OpenGL Test)
+macro_log_feature(Qt5_FOUND "Qt" "Required for building everything"
+                               "http://qt-project.org/" TRUE "${Qt5_MIN_VERSION}")
+macro_log_feature(Qt5_OpenGL_FOUND "QtOpenGL"
                                 "Required for OpenGL acceleration in qtvideosink and QtGStreamerUi"
-                                "http://qt-project.org/" FALSE "${Qt4or5_MIN_VERSION}")
-macro_log_feature(Qt4or5_Quick1_FOUND "QtQuick1 (QtDeclarative)"
-                                "Required for building QtQuick1 support"
-                                "http://qt-project.org/" FALSE "${Qt4or5_MIN_VERSION}")
-if (${QT_VERSION} STREQUAL "5")
-    macro_log_feature(Qt4or5_Quick2_FOUND "QtQuick2 (QtQuick)"
-                                "Required for building QtQuick2 support"
-                                "http://qt-project.org/" TRUE "${Qt4or5_MIN_VERSION}")
-    macro_log_feature(Qt4or5_Qml_FOUND "QtQml"
-                                "Required for building QtQuick2 support"
-                                "http://qt-project.org/" TRUE "${Qt4or5_MIN_VERSION}")
-endif()
+                                "http://qt-project.org/" FALSE "${Qt5_MIN_VERSION}")
+#if (${QT_VERSION} STREQUAL "5")
+#    macro_log_feature(Qt5_Quick_FOUND "QtQuick2 (QtQuick)"
+#                                "Required for building QtQuick2 support"
+#                                "http://qt-project.org/" TRUE "${Qt5_MIN_VERSION}")
+#    macro_log_feature(Qt5_Qml_FOUND "QtQml"
+#                                "Required for building QtQuick2 support"
+#                                "http://qt-project.org/" TRUE "${Qt5_MIN_VERSION}")
+#endif()
 
 if (QTGSTREAMER_TESTS)
-    macro_log_feature(Qt4or5_Test_FOUND "QtTest" "Required for building unit tests"
-                                      "http://qt-project.org/" FALSE "${Qt4or5_MIN_VERSION}")
-    if (NOT Qt4or5_Test_FOUND)
+    macro_log_feature(Qt5_Test_FOUND "QtTest" "Required for building unit tests"
+                                      "http://qt-project.org/" FALSE "${Qt5_MIN_VERSION}")
+    if (NOT Qt5_Test_FOUND)
         set(QTGSTREAMER_TESTS OFF)
     endif()
 endif()

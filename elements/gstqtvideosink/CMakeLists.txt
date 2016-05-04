@@ -75,12 +75,12 @@ target_link_libraries(gst${QTVIDEOSINK_NAME}
     ${GSTREAMER_VIDEO_LIBRARY}
     ${GstQtVideoSink_GL_LIBS}
 )
-qt4or5_use_modules(gst${QTVIDEOSINK_NAME} Core Gui Widgets)
+qt5_use_modules(gst${QTVIDEOSINK_NAME} Core Gui Widgets)
 if (Qt4or5_Quick2_FOUND AND (OPENGL_FOUND OR OPENGLES2_FOUND))
-    qt4or5_use_modules(gst${QTVIDEOSINK_NAME} Quick2)
+    qt5_use_modules(gst${QTVIDEOSINK_NAME} Quick2)
 endif()
 if (Qt4or5_OpenGL_FOUND AND (OPENGL_FOUND OR OPENGLES2_FOUND))
-    qt4or5_use_modules(gst${QTVIDEOSINK_NAME} OpenGL)
+    qt5_use_modules(gst${QTVIDEOSINK_NAME} OpenGL)
 endif()
 install(TARGETS gst${QTVIDEOSINK_NAME} DESTINATION ${QTGSTREAMER_GST_PLUGINS_INSTALL_DIR})
 
@@ -99,8 +99,8 @@ if (QTGSTREAMER_TESTS)
         ${GSTREAMER_VIDEO_LIBRARY}
         ${GstQtVideoSink_GL_LIBS}
     )
-    qt4or5_use_modules(qtvideosink_autotest Core Gui Widgets Test)
+    qt5_use_modules(qtvideosink_autotest Core Gui Widgets Test)
     if (Qt4or5_OpenGL_FOUND AND (OPENGL_FOUND OR OPENGLES2_FOUND))
-        qt4or5_use_modules(qtvideosink_autotest OpenGL)
+        qt5_use_modules(qtvideosink_autotest OpenGL)
     endif()
 endif()
